@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ImageView
+        android:id="@+id/schedule_output_image"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/schedule_information_output_corner_radius" />
+
+    <TextView
+        android:id="@+id/schedule_output_employee_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/schedule_output_image"
+        android:layout_alignEnd="@+id/schedule_output_image"
+        android:layout_alignBottom="@+id/schedule_output_image"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="200dp"
+        android:text="@string/sample_string"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:layout_marginStart="5dp"/>
+
+    <TextView
+        android:id="@+id/schedule_output_employee_hours"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/schedule_output_image"
+        android:layout_alignEnd="@+id/schedule_output_image"
+        android:layout_alignBottom="@+id/schedule_output_image"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="150dp"
+        android:text="@string/sample_string"
+        android:textSize="16sp"
+        android:gravity="center"/>
+</RelativeLayout>

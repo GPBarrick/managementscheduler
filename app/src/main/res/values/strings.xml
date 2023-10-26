@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">management_scheduler</string>
+    <string name="sample_string">sample_text</string>
+    <string name="sample_plus">+</string>
 </resources>
