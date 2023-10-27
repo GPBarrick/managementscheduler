@@ -7,4 +7,80 @@
     android:layout_height="match_parent"
     tools:context=".AddModule">
 
+    <ImageView
+        android:id="@+id/input_information_header_image"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/schedule_information_corner_radius"
+        android:layout_marginTop="150dp" />
+
+    <ImageView
+        android:id="@+id/input_information_main_image"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_below="@+id/input_information_header_image"
+        android:layout_alignStart="@+id/input_information_header_image"
+        android:layout_alignEnd="@+id/input_information_header_image"
+        android:layout_marginStart="-50dp"
+        android:layout_marginEnd="-50dp"
+        android:layout_marginTop="-25dp"
+        android:background="@drawable/schedule_information_corner_radius" />
+
+    <TextView
+        android:id="@+id/input_information_header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/input_information_header_image"
+        android:layout_alignTop="@+id/input_information_header_image"
+        android:layout_alignEnd="@+id/input_information_header_image"
+        android:layout_alignBottom="@+id/input_information_header_image"
+        android:gravity="center"
+        android:text="@string/sample_string"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/input_information_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/input_information_header_image"
+        android:layout_alignStart="@+id/input_information_main_image"
+        android:layout_alignEnd="@+id/input_information_main_image"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:hint="Name"
+        android:imeOptions="actionGo"/>
+
+    <EditText
+        android:id="@+id/input_information_schedule"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/input_information_main_image"
+        android:layout_alignEnd="@+id/input_information_main_image"
+        android:layout_below="@+id/input_information_name"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:background="@color/white"
+        android:hint="Schedule"
+        android:gravity="center"
+        android:imeOptions="actionGo"/>
+
+    <Button
+        android:id="@+id/input_information_confirm_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/input_information_schedule"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:layout_alignStart="@+id/input_information_main_image"
+        android:layout_alignEnd="@+id/input_information_main_image"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="Confirm"/>
+
 </RelativeLayout>

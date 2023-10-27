@@ -1,7 +1,8 @@
 package com.example.management_scheduler;
 import android.widget.TextView;
 import android.widget.ImageView;
-public class EmployeeModule {
+import java.io.Serializable;
+public class EmployeeModule implements Serializable {
     private String employeeName;
     private String employeeShift;
     private int moduleBackground;

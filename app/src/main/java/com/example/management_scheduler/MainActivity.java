@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         // set the correct adapter giving data and xml object linkage
         SetListViewAdapter();
         // image button listener (add new module)
-        ImageButtonListener();
+        ImageButtonListener(this.employeeModuleList);
     }
     // get the application context
     public Context applicationContext;
@@ -74,9 +74,15 @@ public class MainActivity extends AppCompatActivity {
     // create the data structure of employee module objects
     public ArrayList<EmployeeModule> employeeModuleList;
     private void InitializeEmployeeModuleList() {
-        this.employeeModuleList = new ArrayList<>();
-        for (int ndx = 0; ndx < employeeNameStructure.size(); ++ndx) {
-            this.employeeModuleList.add(new EmployeeModule(this.employeeNameStructure.get(ndx), this.employeeShiftStructure.get(ndx), 0));
+        Intent intent = getIntent();
+        if (intent.getSerializableExtra("module_list_send_back") != null) {
+            ArrayList<EmployeeModule> extraEmployeeModule = (ArrayList<EmployeeModule>)intent.getSerializableExtra("module_list_send_back");
+            this.employeeModuleList = extraEmployeeModule;
+        } else {
+            this.employeeModuleList = new ArrayList<>();
+            for (int ndx = 0; ndx < employeeNameStructure.size(); ++ndx) {
+                this.employeeModuleList.add(new EmployeeModule(this.employeeNameStructure.get(ndx), this.employeeShiftStructure.get(ndx), 0));
+            }
         }
     }
     // create the adapter that will be used to connect the data structures to the inflated xml layout within R.layout.activity_main
@@ -89,12 +95,13 @@ public class MainActivity extends AppCompatActivity {
         this.scheduleInformationView.setAdapter(this.moduleAdapter);
     }
     // create a listener for the image button (add module) => for now it is employee module
-    private void ImageButtonListener() {
+    private void ImageButtonListener(ArrayList<EmployeeModule> employeeModuleList) {
         this.mainAddModuleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(MainActivity.this, "Adding Service", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, AddModule.class);
+                intent.putExtra("module_list", employeeModuleList);
                 startActivity(intent);
             }
         });
