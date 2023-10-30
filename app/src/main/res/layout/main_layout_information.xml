@@ -1,43 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ImageView
-        android:id="@+id/list_information_header"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="55dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/asset_rounded_corners_1" />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp">
 
     <ImageView
         android:id="@+id/list_information_main"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:layout_below="@+id/list_information_header"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginTop="-30dp"
-        android:background="@drawable/asset_rounded_corners_1" />
+        android:background="@drawable/asset_rounded_corners_1"
+        android:elevation="10dp"
+        android:layout_marginBottom="20dp"/>
 
-    <ListView
-        android:id="@+id/list_information_list"
+    <ImageView
+        android:id="@+id/list_information_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/list_information_header_text"
+        android:layout_alignTop="@+id/list_information_header_text"
+        android:layout_alignEnd="@+id/list_information_header_text"
+        android:layout_alignBottom="@+id/list_information_header_text"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="-10dp"
+        android:layout_marginBottom="-5dp"
+        android:background="@drawable/asset_rounded_corners_2"
+        android:elevation="15dp"/>
+
+    <TextView
+        android:id="@+id/list_information_header_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/list_information_main"
+        android:layout_alignStart="@+id/list_information_main"
+        android:layout_alignEnd="@+id/list_information_main"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:gravity="center"
+        android:text="DD/MM"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:elevation="15dp"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_information_module"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/list_information_main"
         android:layout_alignTop="@+id/list_information_main"
         android:layout_alignEnd="@+id/list_information_main"
         android:layout_alignBottom="@+id/list_information_main"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginTop="70dp"
+        android:layout_marginBottom="20dp"
+        android:elevation="10dp" />
 
 </RelativeLayout>

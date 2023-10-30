@@ -2,4 +2,7 @@
     <string name="app_name">management_scheduler</string>
     <string name="addition_button_text">Create Organizer</string>
     <string name="today_play">Today\'s Plan</string>
+    <string name="create_organizer">Create Organizer</string>
+    <string name="name_text">Name</string>
+    <string name="create_text">Create</string>
 </resources>
