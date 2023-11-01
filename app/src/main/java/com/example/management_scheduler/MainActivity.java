@@ -19,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         InitializeViews();
         InitializeCategoryModule();
+
         CreateOrganizerButton(this.clientModuleList);
+        ModuleButtonListener(this.clientModuleList);
     }
     public ImageView mainInformationHeader, mainInformationMain;
     public RecyclerView mainLayoutList;
@@ -35,18 +37,7 @@ public class MainActivity extends AppCompatActivity {
     public static ArrayList<ClientModule> clientModuleList;
     public LinearLayoutManager layoutManager;
     public CategoryModuleAdapter categoryModuleAdapter;
-    /*public ArrayList<ClientData> clientDataList;
-    public ArrayList<ClientData> clientDataList2;*/
     private void InitializeCategoryModule() {
-        /*this.clientDataList2 = new ArrayList<>();
-        this.clientDataList = new ArrayList<>();
-        this.clientDataList.add(new ClientData("Alexander R", "8:00AM-12:00AM"));
-        this.clientModuleList.add(new ClientModule(new ModuleDataAdapter(this.clientDataList)));
-        this.clientDataList2.add(new ClientData("Alex", "DSP"));
-        this.clientDataList2.add(new ClientData("Alex", "DSP"));
-        this.clientDataList2.add(new ClientData("Alex", "DSP"));
-        this.clientModuleList.add(new ClientModule(new ModuleDataAdapter(this.clientDataList2)));*/
-
         /* Create the components responsible for initializing the adapters and apply data from intent */
         if (this.clientModuleList == null) {
             this.clientModuleList = new ArrayList<ClientModule>();
@@ -72,9 +63,31 @@ public class MainActivity extends AppCompatActivity {
         Log.v("returning_from", "= "+returnAddress);
         if (returnAddress == 0) {
         } else if (returnAddress == 10) {
-            Log.v("name_input", "= "+getIntent().getStringExtra("name_input"));
-            this.clientModuleList.add(new ClientModule(new ModuleDataAdapter(new ArrayList<ClientData>())));
+            String clientCategoryName = getIntent().getStringExtra("name_input");
+            if (clientCategoryName.length() == 0) {
+                clientCategoryName = "Category: " + (this.clientModuleList.size() + 1);
+            }
+            Log.v("name_input", "= "+clientCategoryName);
+            ArrayList<ClientData> cD = new ArrayList<ClientData>();
+            cD.add(new ClientData("D1", "D2"));
+            cD.add(new ClientData("D1", "D2"));
+            DataPreset preset = new DataPreset("Schedule");
+            this.clientModuleList.add(new ClientModule(new ModuleDataAdapter(cD), clientCategoryName, preset));
             Log.v("(after)ma.cml.size() ", "= "+this.clientModuleList.size());
         }
+    }
+    private void ModuleButtonListener(ArrayList<ClientModule> clientModuleList) {
+        this.categoryModuleAdapter.SetClickListener(new EditButtonInterface() {
+            @Override
+            public void onClick(View view, int index) {
+                Log.v("index", "= "+index);
+                Intent configureCategory = new Intent(MainActivity.this, ConfigureCategory.class);
+                configureCategory.putExtra("category_name", clientModuleList.get(index).GetModuleHeader());
+                configureCategory.putExtra("client_module_data_size", clientModuleList.get(index).GetClientInformationList().getItemCount());
+                configureCategory.putExtra("client_module", clientModuleList.get(index));
+                startActivity(configureCategory);
+                Log.v("intent", "= Intent(MainActivity.this, ConfigureCategory.class)");
+            }
+        });
     }
 }

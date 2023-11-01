@@ -67,7 +67,7 @@
         android:layout_marginTop="15dp"
         android:layout_marginStart="20dp"
         android:gravity="center"
-        android:text="@string/today_play"
+        android:text="@string/today_plan"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:elevation="15dp" />

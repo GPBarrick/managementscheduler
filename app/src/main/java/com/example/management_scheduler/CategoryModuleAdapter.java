@@ -6,13 +6,13 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.io.Serializable;
 import java.util.List;
 /* This class is responsible for linking the ClientModule and RecyclerView from within the activity_main.
@@ -28,6 +28,10 @@ public class CategoryModuleAdapter extends RecyclerView.Adapter<CategoryModuleAd
         this.categoryModuleList = categoryModuleList;
         this.applicationContext = applicationContext;
     }
+    public EditButtonInterface editButtonInterface;
+    public void SetClickListener(EditButtonInterface newInterface) {
+        this.editButtonInterface = newInterface;
+    }
     @NonNull
     @Override
     public CategoryModuleAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -37,6 +41,8 @@ public class CategoryModuleAdapter extends RecyclerView.Adapter<CategoryModuleAd
     }
     @Override
     public void onBindViewHolder(@NonNull CategoryModuleAdapter.ViewHolder holder, int position) {
+        /* Set the values of the views to the ClientModule members within the member list List<ClientModule> */
+        holder.mainHeaderText.setText(this.categoryModuleList.get(position).GetModuleHeader());
         /* Set the adapter and layout manager. */
         holder.clientInformationList.setLayoutManager(new LinearLayoutManager(this.applicationContext));
         /* The adapter responsible for linking the client data client module recycler view is needed
@@ -61,12 +67,21 @@ public class CategoryModuleAdapter extends RecyclerView.Adapter<CategoryModuleAd
     public class ViewHolder extends RecyclerView.ViewHolder {
         public RecyclerView clientInformationList;
         public ImageView categoryModuleBackground;
-        public TextView mainHeaderText;
+        public TextView mainHeaderText, editButtonText;
+        public ImageButton editButton;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             this.clientInformationList = itemView.findViewById(R.id.list_information_module);
             this.categoryModuleBackground = itemView.findViewById(R.id.list_information_main);
             this.mainHeaderText = itemView.findViewById(R.id.list_information_header_text);
+            this.editButton = itemView.findViewById(R.id.edit_category_module_button);
+            this.editButtonText = itemView.findViewById(R.id.edit_category_module_button_text);
+            this.editButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    editButtonInterface.onClick(view, getAdapterPosition());
+                }
+            });
         }
     }
 }
